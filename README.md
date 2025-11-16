@@ -46,16 +46,7 @@ npm install
 yarn install
 ```
 
-### 3. Environment Setup
-
-Create a `.env` file in the root directory (if not already present):
-
-```env
-API_URL=https://api.jamendo.com/v3.0/
-CLIENT_ID=c09768cf
-```
-
-### 4. iOS Setup (macOS only)
+### 3. iOS Setup (macOS only)
 
 Install Ruby dependencies:
 
@@ -190,8 +181,7 @@ music_list_app/
 │   └── styles/          # Centralized styles
 ├── navigation/          # Navigation setup
 ├── android/            # Android native code
-├── ios/               # iOS native code
-└── .env              # Environment variables
+└── ios/               # iOS native code
 ```
 
 ## Key Technologies
@@ -235,23 +225,6 @@ yarn lint
 ```bash
 npx tsc --noEmit
 ```
-
-## Building for Production
-
-### Android
-
-```bash
-cd android
-./gradlew assembleRelease
-```
-
-The APK will be generated at: `android/app/build/outputs/apk/release/app-release.apk`
-
-### iOS
-
-1. Open `ios/music_list_app.xcworkspace` in Xcode
-2. Select "Product" → "Archive"
-3. Follow the distribution wizard
 
 ## License
 
