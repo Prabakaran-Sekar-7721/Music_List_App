@@ -1,102 +1,271 @@
-<<<<<<< HEAD
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Music List App
 
-# Getting Started
+A React Native mobile application that fetches and displays music tracks from the Jamendo API with download functionality, navigation, and optimized performance.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+- 🎵 Browse music tracks from Jamendo API
+- 📥 Download tracks to device storage (Android: Downloads folder, iOS: Documents folder)
+- 🔄 Stack navigation with custom header
+- 📱 Optimized FlatList rendering with throttling
+- 🎨 Clean UI with centralized styling
+- 📊 Download progress indicator (Android)
+- 🔒 Type-safe with TypeScript
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Prerequisites
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Before you begin, ensure you have the following installed:
 
-```sh
-# Using npm
-npm start
+- **Node.js** (v14 or higher)
+- **npm** or **yarn**
+- **React Native development environment** - Follow the [React Native Environment Setup](https://reactnative.dev/docs/set-up-your-environment) guide
+- **For iOS development:**
+  - macOS
+  - Xcode (latest version)
+  - CocoaPods
+  - Ruby (v3.0 or higher)
+- **For Android development:**
+  - Android Studio
+  - Android SDK
+  - Java Development Kit (JDK)
 
-# OR using Yarn
-yarn start
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Prabakaran-Sekar-7721/Music_List_App.git
+cd Music_List_App
 ```
 
-## Step 2: Build and run your app
+### 2. Install dependencies
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+npm install
+# OR
+yarn install
 ```
 
-### iOS
+### 3. Environment Setup
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+Create a `.env` file in the root directory (if not already present):
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+```env
+API_URL=https://api.jamendo.com/v3.0/
+CLIENT_ID=c09768cf
+```
 
-```sh
+### 4. iOS Setup (macOS only)
+
+Install Ruby dependencies:
+
+```bash
 bundle install
 ```
 
-Then, and every time you update your native dependencies, run:
+Install CocoaPods dependencies:
 
-```sh
+```bash
+cd ios
 bundle exec pod install
+cd ..
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Running the App
 
-```sh
-# Using npm
+### Start Metro Bundler
+
+First, start the Metro JavaScript bundler:
+
+```bash
+npm start
+# OR
+yarn start
+```
+
+### Run on Android
+
+In a new terminal window:
+
+```bash
+npm run android
+# OR
+yarn android
+```
+
+**Requirements:**
+- Android emulator running OR Android device connected via USB with USB debugging enabled
+- Make sure the emulator/device API level is 21 or higher
+
+### Run on iOS (macOS only)
+
+In a new terminal window:
+
+```bash
 npm run ios
-
-# OR using Yarn
+# OR
 yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+**Requirements:**
+- iOS Simulator installed via Xcode OR physical iOS device connected
+- iOS version 13.0 or higher
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Troubleshooting
 
-## Step 3: Modify your app
+### Android Issues
 
-Now that you have successfully run the app, let's make changes!
+**Problem: "SDK location not found"**
+- Create `local.properties` file in `android/` folder
+- Add: `sdk.dir=/path/to/Android/sdk`
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+**Problem: Download not working**
+- Ensure storage permissions are granted in device settings
+- For Android 11+, check that app has "All files access" permission
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+**Problem: Build fails**
+```bash
+cd android
+./gradlew clean
+cd ..
+npm run android
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+### iOS Issues
 
-## Congratulations! :tada:
+**Problem: "Pod install failed"**
+```bash
+cd ios
+bundle exec pod deintegrate
+bundle exec pod install
+cd ..
+```
 
-You've successfully run and modified your React Native App. :partying_face:
+**Problem: "Command PhaseScriptExecution failed"**
+```bash
+cd ios
+rm -rf Pods Podfile.lock
+bundle exec pod install
+cd ..
+```
 
-### Now what?
+**Problem: Downloaded files not visible**
+- Files are saved in app's Documents/Music folder
+- Access via iOS Files app under "On My iPhone/iPad" → Music List App
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+### General Issues
 
-# Troubleshooting
+**Problem: Metro bundler cache issues**
+```bash
+npm start -- --reset-cache
+# OR
+yarn start --reset-cache
+```
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+**Problem: "Unable to resolve module"**
+```bash
+rm -rf node_modules
+npm install
+# OR
+yarn install
+```
 
-# Learn More
+**Problem: TypeScript errors**
+```bash
+npm run tsc
+# Check for any type errors
+```
 
-To learn more about React Native, take a look at the following resources:
+## Project Structure
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-=======
-# Music_List_App
-This an repo for Music List app 
->>>>>>> 1cd984c111e36b5af41dbd9d6075f68884c6b767
+```
+music_list_app/
+├── components/
+│   ├── Interface/         # TypeScript interfaces
+│   ├── assets/           # SVG icons and images
+│   ├── common/           # Utility functions
+│   ├── core/
+│   │   ├── data/        # API calls
+│   │   └── ui/          # UI components
+│   └── styles/          # Centralized styles
+├── navigation/          # Navigation setup
+├── android/            # Android native code
+├── ios/               # iOS native code
+└── .env              # Environment variables
+```
+
+## Key Technologies
+
+- **React Native**: 0.82.1
+- **TypeScript**: 5.8.3
+- **React Navigation**: Native Stack Navigator
+- **axios**: HTTP client for API requests
+- **react-native-fs**: File system access
+- **react-native-config**: Environment configuration
+- **react-native-svg**: SVG rendering
+
+## API Integration
+
+This app uses the [Jamendo API](https://api.jamendo.com/) to fetch music tracks. The API provides:
+- Track information (name, artist, album)
+- Album artwork
+- Audio streaming URLs
+- Download links
+
+## Development
+
+### Running Tests
+
+```bash
+npm test
+# OR
+yarn test
+```
+
+### Linting
+
+```bash
+npm run lint
+# OR
+yarn lint
+```
+
+### Type Checking
+
+```bash
+npx tsc --noEmit
+```
+
+## Building for Production
+
+### Android
+
+```bash
+cd android
+./gradlew assembleRelease
+```
+
+The APK will be generated at: `android/app/build/outputs/apk/release/app-release.apk`
+
+### iOS
+
+1. Open `ios/music_list_app.xcworkspace` in Xcode
+2. Select "Product" → "Archive"
+3. Follow the distribution wizard
+
+## License
+
+This project is open source and available under the MIT License.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Support
+
+For issues and questions, please open an issue on GitHub.
+
+## Author
+
+Prabakaran Sekar
+- GitHub: [@Prabakaran-Sekar-7721](https://github.com/Prabakaran-Sekar-7721)
