@@ -4,7 +4,6 @@ import Config from 'react-native-config';
 const getTracks = async () => {
     
   try {
-    console.log("API_URL: " + Config.API_URL + " CLIENT_ID: " + Config.CLIENT_ID);
     const response = await axios.get(`${Config.API_URL}/tracks`, {
       params: {
         client_id: Config.CLIENT_ID,

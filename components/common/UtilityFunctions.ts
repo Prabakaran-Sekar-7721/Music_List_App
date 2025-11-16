@@ -3,7 +3,6 @@ import RNFS from 'react-native-fs';
 
 export const downloadFunction = async (url: string,setIsDownloading: React.Dispatch<React.SetStateAction<boolean>>,setPercentage: React.Dispatch<React.SetStateAction<number>>) => {
     try {
-        console.log("Download function triggered for URL: " + url);
         setIsDownloading(true);
         
         // Extract filename from URL or use a default name
@@ -30,8 +29,6 @@ export const downloadFunction = async (url: string,setIsDownloading: React.Dispa
         
         const filepath = downloadDir + filename;
         
-        console.log("Downloading to: " + filepath);
-        
         // Download the file
         const result = await RNFS.downloadFile({
             fromUrl: url,
@@ -39,12 +36,10 @@ export const downloadFunction = async (url: string,setIsDownloading: React.Dispa
             progress: (res: any) => {
                 const progress = res.bytesWritten / res.contentLength;
                 setPercentage(parseFloat((progress * 100).toFixed(2)));
-                console.log(`Download progress: ${(progress * 100).toFixed(2)}%`);
             }
         }).promise;
         
         if (result.statusCode === 200) {
-            console.log("File downloaded successfully to: " + filepath);
             Alert.alert('Success', `File downloaded successfully!\nLocation: ${filepath}`);
             setIsDownloading(false);
             return filepath;

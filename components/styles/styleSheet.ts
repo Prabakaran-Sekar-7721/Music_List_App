@@ -102,6 +102,7 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#ffffff55',
+    marginBottom: 20,
   },
   detailsInfoContainer: {
     width: '100%',
@@ -125,6 +126,7 @@ export const styles = StyleSheet.create({
     width: '80%',
     backgroundColor: '#1DB954ff',
     borderRadius: 100,
+    marginVertical: 20,
   },
 
   // Header Styles

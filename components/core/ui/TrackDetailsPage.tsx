@@ -29,10 +29,10 @@ export const TrackDetailsPage: React.FC<TrackDetailsScreenProps> = ({
   return (
     <ScrollView style={styles.container}>
       <View style={styles.detailsImageContainer}>
-        <Image source={{ uri: track.album_image }} style={styles.detailsImage} />
-        <Text style={styles.textPrimaryLarge}>
+                <Text style={styles.textPrimaryLarge}>
           {track.name}
         </Text>
+        <Image source={{ uri: track.album_image }} style={styles.detailsImage} />
       </View>
       <View style={styles.detailsInfoContainer}>
         <View style={styles.detailsFieldContainer}>

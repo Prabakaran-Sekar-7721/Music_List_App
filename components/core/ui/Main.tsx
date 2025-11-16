@@ -14,7 +14,6 @@ export const Main: React.FC<HomeScreenProps> = ({ navigation }) => {
   useEffect(() => {
     const fetchdata = async () => {
       const tracks = await getTracks();
-      console.log(tracks?.results);
       setTracks(tracks?.results || []);
     };
     fetchdata();
