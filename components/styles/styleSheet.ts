@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 import { colors } from "./colors.ts";
 
 export const styles = StyleSheet.create({
@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.backgroundColor,
+    paddingTop: 5,
   },
 
   // Text Styles
@@ -135,12 +136,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    height: 48,
+    height: 110,
+    paddingTop: 50,
   },
   headerBackButton: {
     position: 'absolute',
     left: 10,
     zIndex: 1,
+    marginTop: 50,
+    marginLeft: 10,
   },
   headerTitle: {
     fontSize: 18,

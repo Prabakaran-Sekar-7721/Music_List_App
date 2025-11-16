@@ -15,6 +15,7 @@ import {
 } from 'react-native-safe-area-context';
 import { RootStack } from './navigation/RootStack';
 import { Header } from './components/core/ui/Header';
+import { colors } from './components/styles/colors';
 
 function App() {
   return (
@@ -26,12 +27,12 @@ function App() {
 
 function AppContent() {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <StatusBar barStyle="dark-content" backgroundColor="#000" />
+    <View style={{ flex: 1, backgroundColor: colors.backgroundColor }}>
+      {/* <StatusBar barStyle="light-content" backgroundColor="#1DB954ff" translucent={false} /> */}
       <NavigationContainer>
         <RootStack />
       </NavigationContainer>
-    </SafeAreaView>
+    </View>
   );
 }
 
